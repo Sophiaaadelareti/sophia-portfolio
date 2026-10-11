@@ -1,0 +1,463 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+}
+
+:root {
+    --fundo: #DED5CA;
+    --secundaria: #776856;
+    --texto1: #000;
+    --texto2: #fff;
+}
+
+body.Escuro {
+    --fundo: #776856;
+    --secundaria: #DED5CA;
+    --texto1: #fff;
+    --texto2: #000;
+}
+
+body {
+    background-color: var(--fundo);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 80px 100px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease;
+    width: 100%;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: calc(100% - 200px);
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px;
+    margin: 20px 100px;
+    border-radius: 100px;
+    background: url("../imagens/Rectangle\ 19.png") center/cover no-repeat;
+    box-shadow: 0 0 75px 5px rgba(119, 104, 86, 0.5);
+    transition: all 0.3s ease;
+}
+
+.PáginasCabecario {
+    font: 400 32px/32px "Inria Serif", serif;
+    text-decoration: none;
+    color: rgb(0 0 0 / 50%);
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.PáginasCabecario:hover {
+    color: rgb(0 0 0);
+    transform: scale(1.05);
+}
+
+.PáginasCabecario.Ativo {
+    color: rgb(0 0 0);
+}
+
+#config {
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s ease;
+}
+
+#config:hover {
+    transform: rotate(90deg);
+}
+
+#config img {
+    width: 25px;
+    height: 25px;
+}
+
+#menu {
+    visibility: hidden;
+    transition: transform 0.2s ease;
+}
+
+#menu:hover {
+    transform: scale(1.1);
+}
+
+#modalEscuro,
+#modalPáginas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    padding: 15px 10px;
+    width: 140px;
+    position: fixed;
+    z-index: 9;
+    background: url("../imagens/Rectangle\ 19.png") center/cover no-repeat;
+
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+#modalEscuro {
+    top: 90px;
+    right: 120px;
+}
+
+#modalPáginas {
+    top: 90px;
+    left: 120px;
+}
+
+#modalEscuro.Ativo,
+#modalPáginas.Ativo {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+#BotaoEscuro {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 5px;
+    border-radius: 50px;
+    width: 50px;
+    border: 1px black solid;
+    transition: justify-content 0.3s ease;
+}
+
+#BotaoEscuro.Ativo {
+    justify-content: flex-end;
+}
+
+#BotaoEscuro div {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    background-color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+#BotaoEscuro.Ativo div {
+    background-color: #000;
+}
+
+.PáginasCabecarioMenor {
+    font: 400 16px/16px "Inria Serif", serif;
+    text-decoration: none;
+    color: rgb(0 0 0 / 50%);
+    transition: color 0.2s ease;
+}
+
+.PáginasCabecarioMenor:hover {
+    color: #000;
+}
+
+.PáginasCabecarioMenor.Ativo {
+    color: rgb(0 0 0);
+}
+
+main {
+    width: 100%;
+}
+
+.fade-in {
+    animation: fadeIn 0.8s ease forwards;
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.About {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.About>img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.conteudoAbout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 25px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.imagensAbout {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+.descricaoAbout {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.descricaoAbout div {
+    display: flex;
+    align-items: end;
+    gap: 20px;
+    padding: 15px;
+    border-radius: 30px;
+    width: 100%;
+    background-color: var(--secundaria);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.descricaoAbout div:hover {
+    transform: translateY(-5px);
+}
+
+.descricaoAbout img {
+    width: 120px;
+    height: 100px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.descricaoAbout h1,
+.descricaoAbout h2,
+.descricaoAbout h3 {
+    font-family: "Inria Serif", serif;
+    color: var(--texto1);
+    transition: color 0.3s ease;
+}
+
+.descricaoAbout h1 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.descricaoAbout h2 {
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.descricaoAbout h3 {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.4;
+}
+
+.Skills {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.TituloSkills {
+    font: 700 48px "Inria Serif", serif;
+    color: var(--texto1);
+    text-transform: uppercase;
+}
+
+.GradeSkills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.CardSkill {
+    background-color: var(--secundaria);
+    padding: 30px;
+    border-radius: 30px;
+    color: var(--texto2);
+    font: 400 24px/1.4 "Inria Serif", serif;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.CardSkill img {
+    height: 50px;
+}
+
+.CardSkill:hover {
+    transform: translateY(-5px);
+}
+
+.CardSkill h4 {
+    font-weight: 700;
+    font-size: 26px;
+    border-bottom: 2px solid var(--fundo);
+    padding-bottom: 10px;
+}
+
+.Projects {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width: 1420px) {
+    .Projects {
+        flex-wrap: wrap;
+    }
+}
+
+.Projects img {
+    height: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.GaleriaProjetos img:hover {
+    transform: scale(1.03);
+}
+
+.TextoProjetos {
+    min-width: 400px;
+    background-color: var(--secundaria);
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.TextoProjetos div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.TextoProjetos h2 {
+    font: 400 32px/1.4 "Inria Serif", serif;
+    color: var(--texto1);
+max-width: 250px;}
+
+.BtnProjetos {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--texto1);
+    color: var(--secundaria);
+    border-radius: 50px;
+    font: 700 20px "Inria Serif", serif;
+    text-decoration: none;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.BtnProjetos:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+.Contact {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    margin: auto;
+}
+
+.BannerContato {
+    font: 700 80px "Inria Serif", serif;
+    color: var(--texto1);
+    opacity: 0.1;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.InfoContato {
+    background-image: linear-gradient(90deg, var(--fundo), var(--secundaria));
+    padding: 75px;
+    border-radius: 30px;
+    width: 100%;
+    max-width: 1200px;
+    height: 750px;
+    display: flex;
+    flex-direction: column;
+    gap: 75px;
+    align-items: end;
+    justify-content: center;
+    margin-left: 50px;
+    position: relative;
+}
+
+.InfoContato img {
+    position: absolute;
+    left: -50px;
+}
+
+.InfoContato h2 {
+    font: 700 36px "Inria Serif", serif;
+    color: var(--texto1);
+    margin-bottom: 20px;
+}
+
+.InfoContato ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.InfoContato li a {
+    font: 400 24px "Inria Serif", serif;
+    color: var(--texto1);
+    text-decoration: none;
+    transition: color 0.3s ease, margin-left 0.3s ease;
+}
+
+.InfoContato li a:hover {
+    color: var(--fundo);
+    margin-left: 10px;
+}
+
+@media (max-width: 1000px) {
+    header {
+        width: calc(100% - 40px);
+        margin: 20px 20px;
+    }
+
+    header a {
+        display: none;
+    }
+
+    #menu {
+        visibility: visible;
+    }
+
+    body {
+        padding: 80px 20px;
+    }
+
+    #modalEscuro {
+        right: 50px;
+        top: 90px;
+    }
+
+    #modalPáginas {
+        left: 50px;
+        top: 90px;
+    }
+}
